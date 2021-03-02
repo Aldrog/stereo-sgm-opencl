@@ -124,10 +124,10 @@ int main(int argc, char* argv[])
             clEnqueueWriteBuffer(cl_queue, d_left, true, 0, width * height, left.data, 0, nullptr, nullptr);
             clEnqueueWriteBuffer(cl_queue, d_right, true, 0, width * height, right.data, 0, nullptr, nullptr);
 
-            auto t = std::chrono::steady_clock::now();
+            auto t = std::chrono::high_resolution_clock::now();
             //ssgm.execute(left.data, right.data, reinterpret_cast<uint16_t*>(disp.data));
             ssgm.execute(d_left, d_right, d_disp);
-            std::chrono::milliseconds dur = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - t);
+            std::chrono::duration<double, std::milli> dur = std::chrono::high_resolution_clock::now() - t;
             clEnqueueReadBuffer(cl_queue, d_disp, true, 0, width * height * output_depth / 8, disp.data, 0, nullptr, nullptr);
 
 
