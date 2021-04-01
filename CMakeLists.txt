@@ -74,7 +74,7 @@ set_target_properties(${TARGET_NAME} PROPERTIES DEBUG_POSTFIX _d RELWITHDEBINFO_
 target_include_directories(${TARGET_NAME}
     PUBLIC 
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-        $<INSTALL_INTERFACE:include/sgm-cl>
+        $<INSTALL_INTERFACE:include/libsgm_ocl>
 )
 target_link_libraries(${TARGET_NAME} PUBLIC OpenCL::OpenCL)
 
